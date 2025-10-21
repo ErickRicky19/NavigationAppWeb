@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS Travel_App;
+USE Travel_App;
+
+-- User
+CREATE TABLE User_Table (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Trip
+CREATE TABLE Trip_Table (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    User_Id INT NOT NULL,
+    Origin VARCHAR(255) NOT NULL,
+    Destination VARCHAR(255) NOT NULL,
+    Mode ENUM('driving-car','cycling-regular','foot-walking') NOT NULL,
+    Distance DECIMAL(10,2),
+    Duration DECIMAL(10,2),
+    Route JSON,
+    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_Id) REFERENCES User_Table(Id)
+);
