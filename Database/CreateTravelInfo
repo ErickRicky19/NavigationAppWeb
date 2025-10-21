@@ -20,6 +20,6 @@ CREATE TABLE Trip_Table (
     Duration DECIMAL(10,2),
     Route JSON,
     Step JSON,
-    Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreatedOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (User_Id) REFERENCES User_Table(Id)
 );
